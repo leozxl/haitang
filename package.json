@@ -5,6 +5,9 @@
   "author": "javayhu",
   "license": "MIT",
   "packageManager": "yarn@1.22.19",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "yarn build_search && yarn build_date && astro dev",
     "build": "yarn build_search && yarn build_date && astro build",
@@ -40,7 +43,7 @@
     "astro-font": "^0.0.77",
     "astro-icon": "^1.1.0",
     "astro-loading-indicator": "^0.4.0",
-    "better-sqlite3": "^9.5.0",
+    "better-sqlite3": "12.11.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "date-fns": "^3.3.1",
@@ -65,7 +68,7 @@
     "sonner": "^1.4.41",
     "swiper": "^11.0.5",
     "tailwind-merge": "^2.2.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^0.7.0"
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.1.109",
