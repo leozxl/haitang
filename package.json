@@ -68,7 +68,7 @@
     "sonner": "^1.4.41",
     "swiper": "^11.0.5",
     "tailwind-merge": "^2.2.2",
-    "tailwindcss-animate": "^0.7.0"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@iconify-json/tabler": "^1.1.109",
