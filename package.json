@@ -6,7 +6,7 @@
   "license": "MIT",
   "packageManager": "yarn@1.22.19",
   "engines": {
-    "node": "24.x"
+    "node": "20.x"
   },
   "scripts": {
     "dev": "yarn build_search && yarn build_date && astro dev",
