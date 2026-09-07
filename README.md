@@ -82,3 +82,4 @@ Copyright (c) 2024 - Present, Designed & Developed by [javayhu](https://x.com/ja
 ## ⭐ Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=javayhu/haitang&type=Date)](https://star-history.com/#javayhu/haitang&Date)
+
