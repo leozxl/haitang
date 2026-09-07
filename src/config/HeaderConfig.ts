@@ -55,6 +55,10 @@ export const headerConfig = {
         },
       ],
     },
+    {
+      text: '慢墨',
+      href: 'https://yufm.com',
+    },
   ],
   actions: [
     // {
