@@ -2,5 +2,3 @@ User-agent: *
 Allow: /
 
 Disallow: /api/*
-
-Sitemap: https://haitang.app/sitemap-index.xml
