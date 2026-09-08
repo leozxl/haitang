@@ -54,5 +54,4 @@ export const footerConfig = {
         // { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
         // { ariaLabel: 'RSS', icon: 'tabler:rss', href: '/rss.xml' },
     ],
-    footNote: '© 2024 All Rights Reserved.',
 };
