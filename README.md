@@ -1,6 +1,6 @@
 <h1 align=center>海棠诗社</h1>
 
-<p align=center>https://haitang.app | https://haitang.vercel.app</p>
+<p align=center>https://verse.yufm.com</p>
 
 <p align=center>海棠诗社，古诗词的数字桃源</p>
 
@@ -27,9 +27,9 @@
 
 Fork这个项目，然后在Vercel中新建项目，选择Github仓库，配置默认即可。
 
-开源版本的海棠诗社：https://haitang.vercel.app
+开源版本的海棠诗社：https://github.com/leozxl/haitang
 
-现网版本的海棠诗社：https://haitang.app
+现网版本的海棠诗社：https://verse.yufm.com
 
 
 ## 🚀 Getting Started
@@ -82,4 +82,3 @@ Copyright (c) 2024 - Present, Designed & Developed by [javayhu](https://x.com/ja
 ## ⭐ Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=javayhu/haitang&type=Date)](https://star-history.com/#javayhu/haitang&Date)
-
