@@ -47,12 +47,12 @@ const meta_title = work.title + " - " + author_name + " - " + config.site.title;
 // console.log("work title: ", title, ", layout: ", work.layout);
 // const description = work.intro ? work.intro.slice(0, 100) : work.title;
 const description = work.content ? work.content.slice(0, 160) : work.title;
-const canonical = config.site.base_url + `/works/${id}`;
-// console.log('astro canonical: ', Astro.url);
 ---
 
 
-<Base meta_title={meta_title} description={description} canonical={canonical}>
+
+
+<Base meta_title={meta_title} description={description}>
   <!-- <PageHeader title={title} /> -->
   <section class="section px-4 pt-0 pb-0 mb-14 mx-auto">
     <div class="container">
@@ -60,6 +60,8 @@ const canonical = config.site.base_url + `/works/${id}`;
       <div class="mx-auto flex flex-col">
         <div class="mt-14">
           <h1 class="text-2xl text-center">{work.title}</h1>
+
+
 
 
           <div class="flex justify-center items-center mb-4 mt-8">
@@ -77,6 +79,8 @@ const canonical = config.site.base_url + `/works/${id}`;
           </div>
 
 
+
+
           <!-- 居中布局 -->
           {
             work.layout == "center" && (
@@ -89,6 +93,8 @@ const canonical = config.site.base_url + `/works/${id}`;
               </div>
             )
           }
+
+
 
 
           <!-- 段落布局，暂时和居中布局效果一样 -->
@@ -105,8 +111,12 @@ const canonical = config.site.base_url + `/works/${id}`;
           }
 
 
+
+
         </div>
       </div>
+
+
 
 
       <div class="flex flex-col gap-4 md:flex-row md:gap-20">
@@ -170,6 +180,8 @@ const canonical = config.site.base_url + `/works/${id}`;
         </div>
 
 
+
+
         <div class="md:flex-1">
           <!-- 佳句列表 -->
           {
@@ -224,6 +236,8 @@ const canonical = config.site.base_url + `/works/${id}`;
           }
         </div>
       </div>
+
+
 
 
     </div>
