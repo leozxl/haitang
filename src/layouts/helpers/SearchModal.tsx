@@ -1,10 +1,30 @@
-import searchData from ".json/search.json";
 import React, { useEffect, useState } from "react";
 import SearchResult, { type ISearchItem } from "./SearchResult";
 
 const SearchModal = () => {
   const [searchString, setSearchString] = useState("");
   const [inputString, setInputString] = useState("");
+  const [searchData, setSearchData] = useState<ISearchItem[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    fetch("/search.json")
+      .then((response) => {
+        if (!response.ok) throw new Error(`Search index: ${response.status}`);
+        return response.json() as Promise<ISearchItem[]>;
+      })
+      .then((data) => {
+        if (!cancelled) setSearchData(data);
+      })
+      .catch((error) => {
+        console.error("Unable to load search index", error);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // handle input change
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {

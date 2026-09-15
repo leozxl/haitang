@@ -11,22 +11,18 @@ import { localdb as db } from "@/database/localdb";
 import SubTitle from "@/partials/SubTitle.astro";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
-export const prerender = true;
-
-export async function getStaticPaths() {
-  const list = await db.select().from(table_collections);
-  return list.map((item) => {
-    return {
-      params: { id: item.id },
-    };
-  });
-}
+// Render collection pages on demand instead of generating every collection at build time.
+export const prerender = false;
 
 const { id } = Astro.params;
 
 const collection = (
   await db.select().from(table_collections).where(eq(table_collections.id, id))
 )[0];
+
+if (!collection) {
+  return Astro.redirect("/404");
+}
 
 const works = await db
   .select()

@@ -14,7 +14,10 @@ import vercel from "@astrojs/vercel";
 // https://astro.build/config
 export default defineConfig({
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    // Dynamic database-backed routes need the SQLite file at runtime.
+    includeFiles: ["./src/database/poetry.db"],
+  }),
   site: config.site.base_url,
   base: config.site.base_path ? config.site.base_path : "/",
   trailingSlash: config.site.trailing_slash ? "always" : "never",
