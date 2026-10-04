@@ -28,12 +28,12 @@ const { title, meta_title, description, image, noindex, canonical } =
 
 
 const pageAuthor = config.metadata.meta_author;
-const pageUrl = `${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`;
+const pageUrl = \`${config.site.base_url}/${Astro.url.pathname.replace("/", "")}\`;
 const pageTitle = meta_title ? meta_title : title ? title : config.site.title;
 const pageDescription = description ? description : config.metadata.meta_description;
-const pageImage = `${config.site.base_url}${
+const pageImage = \`${config.site.base_url}${
   image ? image : config.metadata.meta_image
-}`;
+}\`;
 
 
 const isProd = import.meta.env.PROD;
@@ -51,6 +51,7 @@ const shouldNoindex = import.meta.env.PROD || noindex;
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
 <meta name="generator" content={Astro.generator} />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="baidu-site-verification" content="codeva-9OKHetOhJD" />
 
 
 <!-- responsive meta -->
