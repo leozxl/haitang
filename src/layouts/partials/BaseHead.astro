@@ -28,12 +28,12 @@ const { title, meta_title, description, image, noindex, canonical } =
 
 
 const pageAuthor = config.metadata.meta_author;
-const pageUrl = \`${config.site.base_url}/${Astro.url.pathname.replace("/", "")}\`;
+const pageUrl = `${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`;
 const pageTitle = meta_title ? meta_title : title ? title : config.site.title;
 const pageDescription = description ? description : config.metadata.meta_description;
-const pageImage = \`${config.site.base_url}${
+const pageImage = `${config.site.base_url}${
   image ? image : config.metadata.meta_image
-}\`;
+}`;
 
 
 const isProd = import.meta.env.PROD;
