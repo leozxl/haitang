@@ -1,6 +1,5 @@
 ---
 import config from "@/config/config.json";
-import ImageMod from "@/components/ImageMod.astro";
 
 const { src, srcDarkmode }: { src?: string; srcDarkmode?: string } =
   Astro.props;
@@ -22,15 +21,19 @@ const {
 } = config.site;
 
 const { theme_switcher }: { theme_switcher: boolean } = config.settings;
+
+const toRootAssetPath = (path: string) =>
+  path.startsWith("/") ? path : "/" + path;
+
 ---
 
 <a href="/" class="navbar-brand inline-block">
   {
     src || srcDarkmode || logo || logo_darkmode ? (
       <>
-        <ImageMod
+        <img
           loading="eager"
-          src={src ? src : logo}
+          src={toRootAssetPath(src ? src : logo)}
           class={`inline-block ${theme_switcher && "dark:hidden"}`}
           width={logo_width.replace("px", "") * 2}
           height={logo_height.replace("px", "") * 2}
@@ -39,12 +42,11 @@ const { theme_switcher }: { theme_switcher: boolean } = config.settings;
             height: logo_height.replace("px", "") + "px",
             width: logo_width.replace("px", "") + "px",
           }}
-          format="webp"
         />
         {theme_switcher && (
-          <ImageMod
-            src={srcDarkmode ? srcDarkmode : logo_darkmode}
-            class={"hidden dark:inline-block"}
+          <img
+            src={toRootAssetPath(srcDarkmode ? srcDarkmode : logo_darkmode)}
+            class="hidden dark:inline-block"
             width={logo_width.replace("px", "") * 2}
             height={logo_height.replace("px", "") * 2}
             alt={title}
@@ -52,7 +54,6 @@ const { theme_switcher }: { theme_switcher: boolean } = config.settings;
               height: logo_height.replace("px", "") + "px",
               width: logo_width.replace("px", "") + "px",
             }}
-            format="webp"
           />
         )}
       </>
