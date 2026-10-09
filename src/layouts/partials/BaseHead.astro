@@ -1,15 +1,10 @@
 ---
 import "@/styles/main.scss";
-
-
 import config from "@/config/config.json";
-
-
 import Analytics from "@/layouts/Analytics.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import LoadingIndicator from "astro-loading-indicator/component";
 import { ViewTransitions } from "astro:transitions";
-
 
 // types for frontmatters
 export interface Props {
@@ -21,26 +16,24 @@ export interface Props {
   canonical?: string;
 }
 
-
 // destructure frontmatters
 const { title, meta_title, description, image, noindex, canonical } =
   Astro.props;
 
-
 const pageAuthor = config.metadata.meta_author;
 const pageUrl = `${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`;
+const canonicalUrl = canonical ?? pageUrl;
 const pageTitle = meta_title ? meta_title : title ? title : config.site.title;
 const pageDescription = description ? description : config.metadata.meta_description;
 const pageImage = `${config.site.base_url}${
   image ? image : config.metadata.meta_image
 }`;
 
-
 const isProd = import.meta.env.PROD;
 const isVercel = import.meta.env.VERCEL == 1;
-const shouldNoindex = import.meta.env.PROD || noindex;
+const shouldNoindex =
+  (import.meta.env.PROD && Astro.url.hostname !== "verse.xqrp.com") || noindex;
 ---
-
 
 <!-- favicon -->
 <link rel="shortcut icon" href={config.site.favicon} />
@@ -53,23 +46,19 @@ const shouldNoindex = import.meta.env.PROD || noindex;
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="baidu-site-verification" content="codeva-9OKHetOhJD" />
 
-
 <!-- responsive meta -->
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1, maximum-scale=5"
 />
 
-
 <!-- title -->
 <title>
   {pageTitle}
 </title>
 
-
 <!-- canonical url -->
-{canonical && <link rel="canonical" href={canonical} item-prop="url" />}
-
+<link rel="canonical" href={canonicalUrl} item-prop="url" />
 
 <!-- noindex robots -->
 {shouldNoindex && <meta name="robots" content="noindex, nofollow" />}
