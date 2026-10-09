@@ -92,7 +92,7 @@ const pageImage = `${config.site.base_url}${
 const isProd = import.meta.env.PROD;
 const isVercel = import.meta.env.VERCEL == 1;
 const shouldNoindex =
-  Astro.url.hostname !== "verse.xqrp.com" || noindex;
+  import.meta.env.VERCEL_ENV !== "production" || Astro.url.hostname !== "verse.xqrp.com" || noindex;
 ---
 
 
