@@ -1,3 +1,36 @@
+---
+import "@/styles/main.scss";
+import config from "@/config/config.json";
+import Analytics from "@/layouts/Analytics.astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
+import LoadingIndicator from "astro-loading-indicator/component";
+import { ViewTransitions } from "astro:transitions";
+// types for frontmatters
+export interface Props {
+  title?: string;
+  meta_title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+  canonical?: string;
+}
+// destructure frontmatters
+const { title, meta_title, description, image, noindex, canonical } =
+  Astro.props;
+const pageAuthor = config.metadata.meta_author;
+const pageUrl = `${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`;
+const canonicalUrl = canonical ?? pageUrl;
+const pageTitle = meta_title ? meta_title : title ? title : config.site.title;
+const pageDescription = description ? description : config.metadata.meta_description;
+const pageImage = `${config.site.base_url}${
+  image ? image : config.metadata.meta_image
+}`;
+const isProd = import.meta.env.PROD;
+const isVercel = import.meta.env.VERCEL == 1;
+const shouldNoindex =
+  import.meta.env.VERCEL_ENV !== "production" || Astro.url.hostname !== "verse.xqrp.com" || noindex;
+---
+
 
 <!-- favicon -->
 <link rel="shortcut icon" href={config.site.favicon} />
