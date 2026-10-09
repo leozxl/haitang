@@ -1,16 +1,74 @@
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
 ---
 import "@/styles/main.scss";
-
-
 import config from "@/config/config.json";
-
-
 import Analytics from "@/layouts/Analytics.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import LoadingIndicator from "astro-loading-indicator/component";
 import { ViewTransitions } from "astro:transitions";
-
-
 // types for frontmatters
 export interface Props {
   title?: string;
@@ -20,25 +78,21 @@ export interface Props {
   noindex?: boolean;
   canonical?: string;
 }
-
-
 // destructure frontmatters
 const { title, meta_title, description, image, noindex, canonical } =
   Astro.props;
-
-
 const pageAuthor = config.metadata.meta_author;
 const pageUrl = `${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`;
+const canonicalUrl = canonical ?? pageUrl;
 const pageTitle = meta_title ? meta_title : title ? title : config.site.title;
 const pageDescription = description ? description : config.metadata.meta_description;
 const pageImage = `${config.site.base_url}${
   image ? image : config.metadata.meta_image
 }`;
-
-
 const isProd = import.meta.env.PROD;
 const isVercel = import.meta.env.VERCEL == 1;
-const shouldNoindex = import.meta.env.PROD || noindex;
+const shouldNoindex =
+  import.meta.env.VERCEL_ENV !== "production" || Astro.url.hostname !== "verse.xqrp.com" || noindex;
 ---
 
 
@@ -52,6 +106,7 @@ const shouldNoindex = import.meta.env.PROD || noindex;
 <meta name="generator" content={Astro.generator} />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="baidu-site-verification" content="codeva-9OKHetOhJD" />
+<meta name="google-site-verification" content="SrjSGoQVZSvEWvoJLRsRRqB6yZaCjX91vNTJwTdHLy8" />
 
 
 <!-- responsive meta -->
@@ -68,7 +123,7 @@ const shouldNoindex = import.meta.env.PROD || noindex;
 
 
 <!-- canonical url -->
-{canonical && <link rel="canonical" href={canonical} item-prop="url" />}
+<link rel="canonical" href={canonicalUrl} item-prop="url" />
 
 
 <!-- noindex robots -->

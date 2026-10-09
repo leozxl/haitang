@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "海棠诗社",
-    "base_url": "https://verse.yufm.com",
+    "base_url": "https://verse.xqrp.com",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.svg",
@@ -12,6 +12,7 @@
     "logo_text": "海棠诗社"
   },
 
+
   "settings": {
     "search": true,
     "sticky_header": true,
@@ -21,6 +22,7 @@
     "summary_length": 200,
     "blog_folder": "blog"
   },
+
 
   "metadata": {
     "meta_author": "海棠诗社",

@@ -1,6 +1,5 @@
-User-agent: Baiduspider
-Disallow: /
-
 User-agent: *
 Allow: /
 Disallow: /api/*
+
+Sitemap: https://verse.xqrp.com/sitemap.xml
