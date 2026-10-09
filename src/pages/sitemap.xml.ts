@@ -10,6 +10,7 @@ import {
 import config from "@/config/config.json";
 
 const CHUNK_SIZE = 45_000;
+const STATIC_PAGE_COUNT = 10;
 
 export const GET: APIRoute = async () => {
   const [works, authors, collections, dynasties] = await Promise.all([
@@ -19,14 +20,16 @@ export const GET: APIRoute = async () => {
     db.select({ total: count() }).from(table_dynasties),
   ]);
   const groups = [
-    { name: "pages", total: 8 },
+    { name: "pages", total: STATIC_PAGE_COUNT },
     { name: "works", total: Number(works[0]?.total ?? 0) },
     { name: "authors", total: Number(authors[0]?.total ?? 0) },
     { name: "collections", total: Number(collections[0]?.total ?? 0) },
     { name: "dynasties", total: Number(dynasties[0]?.total ?? 0) },
   ];
 
-  const baseUrl = config.site.base_url.replace(/\/$/, "");
+  const baseUrl = config.site.base_url.endsWith("/")
+    ? config.site.base_url.slice(0, -1)
+    : config.site.base_url;
   const sitemapUrls = groups.flatMap((group) =>
     Array.from(
       { length: Math.ceil(group.total / CHUNK_SIZE) },
@@ -38,7 +41,7 @@ export const GET: APIRoute = async () => {
     .join("");
 
   return new Response(
-    "<?xml version=\"1.0\" encoding=\"UTF-8\"?><sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">" + entries + "</sitemapindex>",
+    '<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + entries + "</sitemapindex>",
     {
       headers: {
         "Content-Type": "application/xml; charset=utf-8",
